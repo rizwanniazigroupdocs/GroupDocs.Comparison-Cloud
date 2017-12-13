@@ -1,0 +1,1350 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "GroupDocs.Comparison for Cloud API Reference",
+    "version": "17.12"
+  },
+  "host": "localhost",
+  "basePath": "/v1.0",
+  "schemes": [],
+  "consumes": [
+    "application/json",
+    "application/xml"
+  ],
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "paths": {
+    "/comparison/compareDocuments/changes": {
+      "post": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Returns json result with set of changes between documents",
+        "operationId": "PostChanges",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ComparisonChange"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/changes/categories": {
+      "post": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Posts the categories changes.",
+        "operationId": "PostCategoriesChanges",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          },
+          {
+            "type": "string",
+            "name": "CategoriesType",
+            "in": "query",
+            "x-nullable": true,
+            "description": "Type of the categories."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ComparisonChangesCategoryDto"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/changes/update": {
+      "put": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Applies changes to the document and returns document with the result of comparison",
+        "operationId": "PutChangesDocument",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          },
+          {
+            "type": "string",
+            "name": "OutPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "outPath: path to output document on file storage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Link"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/changes/stream": {
+      "put": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Applies changes to the document and returns stream of document with the result of comparison",
+        "operationId": "PutChangesDocumentStream",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/changes/images": {
+      "put": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Applies changes to the document and returns images of document with the result of comparison",
+        "operationId": "PutChangesImages",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          },
+          {
+            "type": "string",
+            "name": "OutFolder",
+            "in": "query",
+            "x-nullable": true,
+            "description": "outFolder: path to output folder on file storage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Link"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/changes/stream/images": {
+      "put": {
+        "tags": [
+          "Changes"
+        ],
+        "summary": "Applies changes to the document and returns image's streams of document with the result of comparison",
+        "operationId": "PutChangesImagesStream",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments": {
+      "post": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Returns document with the result of comparison",
+        "operationId": "Comparison",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          },
+          {
+            "type": "string",
+            "name": "OutPath",
+            "in": "query",
+            "x-nullable": true,
+            "description": "outPath: path to output document on file storage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Link"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/stream": {
+      "post": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Returns stream of document with the result of comparison",
+        "operationId": "ComparisonStream",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/images": {
+      "post": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Returns images of document with the result of comparison",
+        "operationId": "ComparisonImages",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          },
+          {
+            "type": "string",
+            "name": "OutFolder",
+            "in": "query",
+            "x-nullable": true,
+            "description": "outFolder: path to output folder on file storage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Link"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/comparison/compareDocuments/stream/images": {
+      "post": {
+        "tags": [
+          "Comparison"
+        ],
+        "summary": "Returns image's streams of document with the result of comparison",
+        "operationId": "ComparisonImagesStream",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ComparisonRequest"
+            },
+            "x-nullable": true,
+            "description": "The request."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "file"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ComparisonRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceFile": {
+          "description": "The source name",
+          "$ref": "#/definitions/ComparisonFileInfo"
+        },
+        "targetFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ComparisonFileInfo"
+          },
+          "description": "The files names"
+        },
+        "settings": {
+          "description": "The settings",
+          "$ref": "#/definitions/ComparisonRequestSettings"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ComparisonChange"
+          },
+          "description": "The changes"
+        }
+      },
+      "description": "ComparisonRequest"
+    },
+    "ComparisonFileInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "folder": {
+          "type": "string",
+          "description": "The folder"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password"
+        }
+      },
+      "description": "ComparisonFileInfo dto"
+    },
+    "ComparisonRequestSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generateSummaryPage",
+        "showDeletedContent",
+        "styleChangeDetection",
+        "useFramesForDelInsElements",
+        "calculateComponentCoordinates",
+        "markDeletedInsertedContentDeep"
+      ],
+      "properties": {
+        "generateSummaryPage": {
+          "type": "boolean",
+          "description": "The generate summary page"
+        },
+        "showDeletedContent": {
+          "type": "boolean",
+          "description": "The show deleted content"
+        },
+        "styleChangeDetection": {
+          "type": "boolean",
+          "description": "The style change detection"
+        },
+        "insertedItemsStyle": {
+          "description": "The inserted items style",
+          "$ref": "#/definitions/StyleSettingsValues"
+        },
+        "deletedItemsStyle": {
+          "description": "The deleted items style",
+          "$ref": "#/definitions/StyleSettingsValues"
+        },
+        "styleChangedItemsStyle": {
+          "description": "The style changed items style",
+          "$ref": "#/definitions/StyleSettingsValues"
+        },
+        "wordsSeparatorChars": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The words separator chars"
+        },
+        "useFramesForDelInsElements": {
+          "type": "boolean",
+          "description": "The use frames for delete ins elements"
+        },
+        "detailLevel": {
+          "type": "string",
+          "description": "The detail level"
+        },
+        "calculateComponentCoordinates": {
+          "type": "boolean",
+          "description": "The calculate component coordinates"
+        },
+        "cloneMetadata": {
+          "type": "string",
+          "description": "The clone metadata"
+        },
+        "metaData": {
+          "description": "The metadata",
+          "$ref": "#/definitions/ComparisonMetadataValues"
+        },
+        "passwordSaveOption": {
+          "type": "string",
+          "description": "The password save option"
+        },
+        "password": {
+          "type": "string",
+          "description": "The password"
+        },
+        "markDeletedInsertedContentDeep": {
+          "type": "boolean",
+          "description": "The mark deleted inserted content deep"
+        }
+      },
+      "description": "ComparisonRequestSettings dto"
+    },
+    "StyleSettingsValues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "color"
+      ],
+      "properties": {
+        "color": {
+          "description": "Gets or sets the color.",
+          "$ref": "#/definitions/Color"
+        },
+        "beginSeparatorString": {
+          "type": "string",
+          "description": "Gets or sets the begin separator string."
+        },
+        "endSeparatorString": {
+          "type": "string",
+          "description": "Gets or sets the end separator string."
+        }
+      },
+      "description": "StyleSettingsValues dto"
+    },
+    "Color": {
+      "type": "null",
+      "additionalProperties": false,
+      "required": [
+        "Transparent",
+        "AliceBlue",
+        "AntiqueWhite",
+        "Aqua",
+        "Aquamarine",
+        "Azure",
+        "Beige",
+        "Bisque",
+        "Black",
+        "BlanchedAlmond",
+        "Blue",
+        "BlueViolet",
+        "Brown",
+        "BurlyWood",
+        "CadetBlue",
+        "Chartreuse",
+        "Chocolate",
+        "Coral",
+        "CornflowerBlue",
+        "Cornsilk",
+        "Crimson",
+        "Cyan",
+        "DarkBlue",
+        "DarkCyan",
+        "DarkGoldenrod",
+        "DarkGray",
+        "DarkGreen",
+        "DarkKhaki",
+        "DarkMagenta",
+        "DarkOliveGreen",
+        "DarkOrange",
+        "DarkOrchid",
+        "DarkRed",
+        "DarkSalmon",
+        "DarkSeaGreen",
+        "DarkSlateBlue",
+        "DarkSlateGray",
+        "DarkTurquoise",
+        "DarkViolet",
+        "DeepPink",
+        "DeepSkyBlue",
+        "DimGray",
+        "DodgerBlue",
+        "Firebrick",
+        "FloralWhite",
+        "ForestGreen",
+        "Fuchsia",
+        "Gainsboro",
+        "GhostWhite",
+        "Gold",
+        "Goldenrod",
+        "Gray",
+        "Green",
+        "GreenYellow",
+        "Honeydew",
+        "HotPink",
+        "IndianRed",
+        "Indigo",
+        "Ivory",
+        "Khaki",
+        "Lavender",
+        "LavenderBlush",
+        "LawnGreen",
+        "LemonChiffon",
+        "LightBlue",
+        "LightCoral",
+        "LightCyan",
+        "LightGoldenrodYellow",
+        "LightGreen",
+        "LightGray",
+        "LightPink",
+        "LightSalmon",
+        "LightSeaGreen",
+        "LightSkyBlue",
+        "LightSlateGray",
+        "LightSteelBlue",
+        "LightYellow",
+        "Lime",
+        "LimeGreen",
+        "Linen",
+        "Magenta",
+        "Maroon",
+        "MediumAquamarine",
+        "MediumBlue",
+        "MediumOrchid",
+        "MediumPurple",
+        "MediumSeaGreen",
+        "MediumSlateBlue",
+        "MediumSpringGreen",
+        "MediumTurquoise",
+        "MediumVioletRed",
+        "MidnightBlue",
+        "MintCream",
+        "MistyRose",
+        "Moccasin",
+        "NavajoWhite",
+        "Navy",
+        "OldLace",
+        "Olive",
+        "OliveDrab",
+        "Orange",
+        "OrangeRed",
+        "Orchid",
+        "PaleGoldenrod",
+        "PaleGreen",
+        "PaleTurquoise",
+        "PaleVioletRed",
+        "PapayaWhip",
+        "PeachPuff",
+        "Peru",
+        "Pink",
+        "Plum",
+        "PowderBlue",
+        "Purple",
+        "Red",
+        "RosyBrown",
+        "RoyalBlue",
+        "SaddleBrown",
+        "Salmon",
+        "SandyBrown",
+        "SeaGreen",
+        "SeaShell",
+        "Sienna",
+        "Silver",
+        "SkyBlue",
+        "SlateBlue",
+        "SlateGray",
+        "Snow",
+        "SpringGreen",
+        "SteelBlue",
+        "Tan",
+        "Teal",
+        "Thistle",
+        "Tomato",
+        "Turquoise",
+        "Violet",
+        "Wheat",
+        "White",
+        "WhiteSmoke",
+        "Yellow",
+        "YellowGreen",
+        "R",
+        "G",
+        "B",
+        "A",
+        "IsKnownColor",
+        "IsEmpty",
+        "IsNamedColor",
+        "IsSystemColor",
+        "Empty"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValueType"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Transparent": {
+              "$ref": "#/definitions/Color"
+            },
+            "AliceBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "AntiqueWhite": {
+              "$ref": "#/definitions/Color"
+            },
+            "Aqua": {
+              "$ref": "#/definitions/Color"
+            },
+            "Aquamarine": {
+              "$ref": "#/definitions/Color"
+            },
+            "Azure": {
+              "$ref": "#/definitions/Color"
+            },
+            "Beige": {
+              "$ref": "#/definitions/Color"
+            },
+            "Bisque": {
+              "$ref": "#/definitions/Color"
+            },
+            "Black": {
+              "$ref": "#/definitions/Color"
+            },
+            "BlanchedAlmond": {
+              "$ref": "#/definitions/Color"
+            },
+            "Blue": {
+              "$ref": "#/definitions/Color"
+            },
+            "BlueViolet": {
+              "$ref": "#/definitions/Color"
+            },
+            "Brown": {
+              "$ref": "#/definitions/Color"
+            },
+            "BurlyWood": {
+              "$ref": "#/definitions/Color"
+            },
+            "CadetBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "Chartreuse": {
+              "$ref": "#/definitions/Color"
+            },
+            "Chocolate": {
+              "$ref": "#/definitions/Color"
+            },
+            "Coral": {
+              "$ref": "#/definitions/Color"
+            },
+            "CornflowerBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "Cornsilk": {
+              "$ref": "#/definitions/Color"
+            },
+            "Crimson": {
+              "$ref": "#/definitions/Color"
+            },
+            "Cyan": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkCyan": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkGoldenrod": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkGray": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkKhaki": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkMagenta": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkOliveGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkOrange": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkOrchid": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkRed": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkSalmon": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkSeaGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkSlateBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkSlateGray": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkTurquoise": {
+              "$ref": "#/definitions/Color"
+            },
+            "DarkViolet": {
+              "$ref": "#/definitions/Color"
+            },
+            "DeepPink": {
+              "$ref": "#/definitions/Color"
+            },
+            "DeepSkyBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "DimGray": {
+              "$ref": "#/definitions/Color"
+            },
+            "DodgerBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "Firebrick": {
+              "$ref": "#/definitions/Color"
+            },
+            "FloralWhite": {
+              "$ref": "#/definitions/Color"
+            },
+            "ForestGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "Fuchsia": {
+              "$ref": "#/definitions/Color"
+            },
+            "Gainsboro": {
+              "$ref": "#/definitions/Color"
+            },
+            "GhostWhite": {
+              "$ref": "#/definitions/Color"
+            },
+            "Gold": {
+              "$ref": "#/definitions/Color"
+            },
+            "Goldenrod": {
+              "$ref": "#/definitions/Color"
+            },
+            "Gray": {
+              "$ref": "#/definitions/Color"
+            },
+            "Green": {
+              "$ref": "#/definitions/Color"
+            },
+            "GreenYellow": {
+              "$ref": "#/definitions/Color"
+            },
+            "Honeydew": {
+              "$ref": "#/definitions/Color"
+            },
+            "HotPink": {
+              "$ref": "#/definitions/Color"
+            },
+            "IndianRed": {
+              "$ref": "#/definitions/Color"
+            },
+            "Indigo": {
+              "$ref": "#/definitions/Color"
+            },
+            "Ivory": {
+              "$ref": "#/definitions/Color"
+            },
+            "Khaki": {
+              "$ref": "#/definitions/Color"
+            },
+            "Lavender": {
+              "$ref": "#/definitions/Color"
+            },
+            "LavenderBlush": {
+              "$ref": "#/definitions/Color"
+            },
+            "LawnGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "LemonChiffon": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightCoral": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightCyan": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightGoldenrodYellow": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightGray": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightPink": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightSalmon": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightSeaGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightSkyBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightSlateGray": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightSteelBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "LightYellow": {
+              "$ref": "#/definitions/Color"
+            },
+            "Lime": {
+              "$ref": "#/definitions/Color"
+            },
+            "LimeGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "Linen": {
+              "$ref": "#/definitions/Color"
+            },
+            "Magenta": {
+              "$ref": "#/definitions/Color"
+            },
+            "Maroon": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumAquamarine": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumOrchid": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumPurple": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumSeaGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumSlateBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumSpringGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumTurquoise": {
+              "$ref": "#/definitions/Color"
+            },
+            "MediumVioletRed": {
+              "$ref": "#/definitions/Color"
+            },
+            "MidnightBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "MintCream": {
+              "$ref": "#/definitions/Color"
+            },
+            "MistyRose": {
+              "$ref": "#/definitions/Color"
+            },
+            "Moccasin": {
+              "$ref": "#/definitions/Color"
+            },
+            "NavajoWhite": {
+              "$ref": "#/definitions/Color"
+            },
+            "Navy": {
+              "$ref": "#/definitions/Color"
+            },
+            "OldLace": {
+              "$ref": "#/definitions/Color"
+            },
+            "Olive": {
+              "$ref": "#/definitions/Color"
+            },
+            "OliveDrab": {
+              "$ref": "#/definitions/Color"
+            },
+            "Orange": {
+              "$ref": "#/definitions/Color"
+            },
+            "OrangeRed": {
+              "$ref": "#/definitions/Color"
+            },
+            "Orchid": {
+              "$ref": "#/definitions/Color"
+            },
+            "PaleGoldenrod": {
+              "$ref": "#/definitions/Color"
+            },
+            "PaleGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "PaleTurquoise": {
+              "$ref": "#/definitions/Color"
+            },
+            "PaleVioletRed": {
+              "$ref": "#/definitions/Color"
+            },
+            "PapayaWhip": {
+              "$ref": "#/definitions/Color"
+            },
+            "PeachPuff": {
+              "$ref": "#/definitions/Color"
+            },
+            "Peru": {
+              "$ref": "#/definitions/Color"
+            },
+            "Pink": {
+              "$ref": "#/definitions/Color"
+            },
+            "Plum": {
+              "$ref": "#/definitions/Color"
+            },
+            "PowderBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "Purple": {
+              "$ref": "#/definitions/Color"
+            },
+            "Red": {
+              "$ref": "#/definitions/Color"
+            },
+            "RosyBrown": {
+              "$ref": "#/definitions/Color"
+            },
+            "RoyalBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "SaddleBrown": {
+              "$ref": "#/definitions/Color"
+            },
+            "Salmon": {
+              "$ref": "#/definitions/Color"
+            },
+            "SandyBrown": {
+              "$ref": "#/definitions/Color"
+            },
+            "SeaGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "SeaShell": {
+              "$ref": "#/definitions/Color"
+            },
+            "Sienna": {
+              "$ref": "#/definitions/Color"
+            },
+            "Silver": {
+              "$ref": "#/definitions/Color"
+            },
+            "SkyBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "SlateBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "SlateGray": {
+              "$ref": "#/definitions/Color"
+            },
+            "Snow": {
+              "$ref": "#/definitions/Color"
+            },
+            "SpringGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "SteelBlue": {
+              "$ref": "#/definitions/Color"
+            },
+            "Tan": {
+              "$ref": "#/definitions/Color"
+            },
+            "Teal": {
+              "$ref": "#/definitions/Color"
+            },
+            "Thistle": {
+              "$ref": "#/definitions/Color"
+            },
+            "Tomato": {
+              "$ref": "#/definitions/Color"
+            },
+            "Turquoise": {
+              "$ref": "#/definitions/Color"
+            },
+            "Violet": {
+              "$ref": "#/definitions/Color"
+            },
+            "Wheat": {
+              "$ref": "#/definitions/Color"
+            },
+            "White": {
+              "$ref": "#/definitions/Color"
+            },
+            "WhiteSmoke": {
+              "$ref": "#/definitions/Color"
+            },
+            "Yellow": {
+              "$ref": "#/definitions/Color"
+            },
+            "YellowGreen": {
+              "$ref": "#/definitions/Color"
+            },
+            "R": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "G": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "B": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "A": {
+              "type": "integer",
+              "format": "byte"
+            },
+            "IsKnownColor": {
+              "type": "boolean"
+            },
+            "IsEmpty": {
+              "type": "boolean"
+            },
+            "IsNamedColor": {
+              "type": "boolean"
+            },
+            "IsSystemColor": {
+              "type": "boolean"
+            },
+            "Name": {
+              "type": "string"
+            },
+            "Empty": {
+              "$ref": "#/definitions/Color"
+            }
+          }
+        }
+      ]
+    },
+    "ValueType": {
+      "type": "object",
+      "discriminator": "Type",
+      "additionalProperties": false
+    },
+    "ComparisonMetadataValues": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "type": "string",
+          "description": "Gets or sets the author."
+        },
+        "lastSaveBy": {
+          "type": "string",
+          "description": "Gets or sets the last save by."
+        },
+        "company": {
+          "type": "string",
+          "description": "Gets or sets the company."
+        }
+      }
+    },
+    "ComparisonChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "The identifier",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string",
+          "description": "The type change"
+        },
+        "text": {
+          "type": "string",
+          "description": "The text"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The authors"
+        },
+        "action": {
+          "type": "string",
+          "description": "The action"
+        },
+        "styleChanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ComparisonStyleChange"
+          },
+          "description": "The style changes"
+        }
+      },
+      "description": "ComparisonChange dto"
+    },
+    "ComparisonStyleChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "changedProperty": {
+          "type": "string",
+          "description": "Gets or Sets the name of th property that was changes"
+        },
+        "oldValue": {
+          "description": "Gets or Sets the old value of property"
+        },
+        "newValue": {
+          "description": "Gets or Sets the new value of property"
+        }
+      },
+      "description": "ComparisonStyleChange dto"
+    },
+    "ComparisonChangesCategoryDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "The identifier"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ComparisonChange"
+          },
+          "description": "The type change"
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The \"href\" attribute contains the link's IRI. atom:link elements MUST\nhave an href attribute, whose value MUST be a IRI reference"
+        },
+        "rel": {
+          "type": "string",
+          "description": "atom:link elements MAY have a \"rel\" attribute that indicates the link\nrelation type.  If the \"rel\" attribute is not present, the link\nelement MUST be interpreted as if the link relation type is \"alternate\"."
+        },
+        "type": {
+          "type": "string",
+          "description": "On the link element, the \"type\" attribute's value is an advisory\nmedia type: it is a hint about the type of the representation that is\nexpected to be returned when the value of the href attribute is\ndereferenced.  Note that the type attribute does not override the\nactual media type returned with the representation."
+        },
+        "title": {
+          "type": "string",
+          "description": "The \"title\" attribute conveys human-readable information about the\nlink.  The content of the \"title\" attribute is Language-Sensitive."
+        }
+      },
+      "description": "Provides information for the object link.\nThis is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7"
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth": {
+      "type": "oauth2",
+      "flow": "application",
+      "authorizationUrl": "localhost/oauth2/token"
+    },
+    "appsid": {
+      "type": "apiKey",
+      "name": "Appsid",
+      "in": "query"
+    },
+    "signature": {
+      "type": "apiKey",
+      "name": "Signature",
+      "in": "query"
+    }
+  }
+}
