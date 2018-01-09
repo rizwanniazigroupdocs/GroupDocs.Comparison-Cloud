@@ -43,7 +43,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostChangesRequest"/> class.
         /// </summary>
         /// <param name="request">The request.</param>
-        public PostChangesRequest(ComparisonRequest request = null)
+        public PostChangesRequest(Model.ComparisonRequest request = null)
         {
             this.Request = request;
         }
@@ -51,6 +51,6 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// <summary>
         /// The request.
         /// </summary>  
-        public ComparisonRequest Request { get; set; }
+        public Model.ComparisonRequest Request { get; set; }
     }
 }

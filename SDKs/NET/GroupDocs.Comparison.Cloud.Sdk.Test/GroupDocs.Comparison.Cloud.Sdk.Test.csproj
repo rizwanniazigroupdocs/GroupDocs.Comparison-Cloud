@@ -67,7 +67,9 @@ OpenAPI spec version: 1.0
     <Compile Include="TestsSetup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -76,8 +78,5 @@ OpenAPI spec version: 1.0
       <Project>{07EF4E04-4394-494D-BC0B-19F479733E39}</Project>
       <Name>GroupDocs.Comparison.Cloud.Sdk</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
 </Project>

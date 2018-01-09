@@ -44,7 +44,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="categoriesType">Type of the categories.</param>
-        public PostCategoriesChangesRequest(ComparisonRequest request = null, string categoriesType = null)
+        public PostCategoriesChangesRequest(Model.ComparisonRequest request = null, string categoriesType = null)
         {
             this.Request = request;
             this.CategoriesType = categoriesType;
@@ -53,7 +53,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// <summary>
         /// The request.
         /// </summary>  
-        public ComparisonRequest Request { get; set; }
+        public Model.ComparisonRequest Request { get; set; }
 
         /// <summary>
         /// Type of the categories.

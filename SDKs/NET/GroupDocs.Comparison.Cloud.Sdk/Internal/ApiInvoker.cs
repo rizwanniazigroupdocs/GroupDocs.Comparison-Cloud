@@ -23,8 +23,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using GroupDocs.Comparison.Cloud.Sdk.Client;
-
 namespace GroupDocs.Comparison.Cloud.Sdk.Internal
 {
     using System;

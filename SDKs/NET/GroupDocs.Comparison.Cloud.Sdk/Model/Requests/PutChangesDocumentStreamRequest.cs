@@ -43,7 +43,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PutChangesDocumentStreamRequest"/> class.
         /// </summary>
         /// <param name="request">The request.</param>
-        public PutChangesDocumentStreamRequest(ComparisonRequest request = null)
+        public PutChangesDocumentStreamRequest(Model.ComparisonRequest request = null)
         {
             this.Request = request;
         }
@@ -51,6 +51,6 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// <summary>
         /// The request.
         /// </summary>  
-        public ComparisonRequest Request { get; set; }
+        public Model.ComparisonRequest Request { get; set; }
     }
 }

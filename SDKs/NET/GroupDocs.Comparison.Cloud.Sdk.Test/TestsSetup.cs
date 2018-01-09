@@ -8,17 +8,29 @@ using Configuration = GroupDocs.Comparison.Cloud.Sdk.Api.Configuration;
 
 namespace GroupDocs.Comparison.Cloud.Sdk.Test
 {
-    [SetUpFixture]
     public class TestsSetup
     {
         private readonly string _appSid = ConfigurationManager.AppSettings["AppSID"];
         private readonly string _appKey = ConfigurationManager.AppSettings["AppKey"];
         private readonly string _apiBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
 
-        private readonly StorageApi _storageApi;
+        protected ComparisonApi ComparisonApi;
+        protected ChangesApi ChangesApi;
+        protected StorageApi StorageApi;
 
         public TestsSetup()
         {
+            var comparisonConfig = new Configuration
+            {
+                AuthType = AuthType.OAuth2,
+                AppSid = _appSid,
+                AppKey = _appKey,
+                ApiBaseUrl = _apiBaseUrl
+            };
+
+            ComparisonApi = new ComparisonApi(comparisonConfig);
+            ChangesApi = new ChangesApi(comparisonConfig);
+
             var storageConfig = new Configuration
             {
                 AuthType = AuthType.OAuth2,
@@ -27,7 +39,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Test
                 ApiBaseUrl = _apiBaseUrl
             };
 
-            _storageApi = new StorageApi(storageConfig);
+            StorageApi = new StorageApi(storageConfig);
         }
 
         [OneTimeSetUp]
@@ -45,9 +57,9 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Test
             {
                 var relativeDirPath = dir.Replace(path, string.Empty).Trim(Path.DirectorySeparatorChar);
 
-                var response = _storageApi.IsExist(relativeDirPath);
+                var response = StorageApi.IsExist(relativeDirPath);
                 if (!response.FileExist.IsExist)
-                    _storageApi.CreateFolder(relativeDirPath);
+                    StorageApi.CreateFolder(relativeDirPath);
             }
 
             var files = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
@@ -55,14 +67,14 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Test
             {
                 var relativeFilePath = file.Replace(path, string.Empty).Trim(Path.DirectorySeparatorChar);
 
-                var response = _storageApi.IsExist(relativeFilePath);
+                var response = StorageApi.IsExist(relativeFilePath);
                 if (!response.FileExist.IsExist)
                 {
                     var fileName = Path.GetFileName(file);
                     var relativeDirPath = relativeFilePath.Replace(fileName, string.Empty).Trim(Path.DirectorySeparatorChar);
                     var bytes = File.ReadAllBytes(file);
 
-                    _storageApi.CreateFile(fileName, relativeDirPath, bytes);
+                    StorageApi.CreateFile(fileName, relativeDirPath, bytes);
                 }
             }
         }
@@ -77,6 +89,18 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Test
             var baseDir = Path.Combine(workingDir, "..\\..\\..\\..\\..", "TestData");
 
             return Path.GetFullPath(baseDir);
+        }
+
+        [TearDown]
+        public void AfterEachTest()
+        {
+            RemoveTempFiles();
+        }
+
+        private void RemoveTempFiles()
+        {
+            StorageApi.DeleteFolder("cache");
+            StorageApi.DeleteFolder("tests");
         }
     }
 }

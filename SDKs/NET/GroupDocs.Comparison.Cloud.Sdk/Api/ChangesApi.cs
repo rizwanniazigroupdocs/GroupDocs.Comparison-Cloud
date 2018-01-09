@@ -210,7 +210,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Api
             var postBody = SerializationHelper.Serialize(request.Request); // http body (model) parameter
             try 
             {                               
-                var response = this.apiInvoker.InvokeApi(
+                var response = this.apiInvoker.InvokeBinaryApi(
                     resourcePath, 
                     "PUT", 
                     postBody, 
@@ -218,7 +218,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Api
                     null);
                 if (response != null)
                 {
-                    return (System.IO.Stream)SerializationHelper.Deserialize(response, typeof(System.IO.Stream));
+                    return response;
                 }
                     
                 return null;
@@ -291,7 +291,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Api
             var postBody = SerializationHelper.Serialize(request.Request); // http body (model) parameter
             try 
             {                               
-                var response = this.apiInvoker.InvokeApi(
+                var response = this.apiInvoker.InvokeBinaryApi(
                     resourcePath, 
                     "PUT", 
                     postBody, 
@@ -299,7 +299,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Api
                     null);
                 if (response != null)
                 {
-                    return (System.IO.Stream)SerializationHelper.Deserialize(response, typeof(System.IO.Stream));
+                    return response;
                 }
                     
                 return null;

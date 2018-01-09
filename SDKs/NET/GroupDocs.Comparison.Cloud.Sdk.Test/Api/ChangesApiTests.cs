@@ -9,6 +9,7 @@ using NUnit.Framework;
 
 using GroupDocs.Comparison.Cloud.Sdk.Api;
 using GroupDocs.Comparison.Cloud.Sdk.Model;
+using GroupDocs.Comparison.Cloud.Sdk.Model.Requests;
 
 namespace GroupDocs.Comparison.Cloud.Sdk.Test.Api
 {
@@ -20,35 +21,146 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Test.Api
     /// Please update the test case below to test the API endpoint.
     /// </remarks>
     [TestFixture]
-    public class ChangesApiTests
+    public class ChangesApiTests : TestsSetup
     {
-        private ChangesApi instance;
-
-        /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
+        private Model.ComparisonRequest GetComparisonRequest(string sourceName, List<string> targetsNames)
         {
-            instance = new ChangesApi(new Configuration());
+            Model.ComparisonRequest comparisonRequest = new Model.ComparisonRequest()
+            {
+                Settings = new ComparisonRequestSettings()
+                {
+                    GenerateSummaryPage = true,
+                    ShowDeletedContent = true,
+                    StyleChangeDetection = true,
+                    UseFramesForDelInsElements = false,
+                    DetailLevel = "Low",
+                    DeletedItemsStyle = new StyleSettingsValues()
+                    {
+                        BeginSeparatorString = "",
+                        EndSeparatorString = "",
+                        Color = new Color().Red
+                    },
+                    InsertedItemsStyle = new StyleSettingsValues()
+                    {
+                        BeginSeparatorString = "",
+                        EndSeparatorString = "",
+                        Color = new Color().Blue
+                    },
+                    StyleChangedItemsStyle = new StyleSettingsValues()
+                    {
+                        BeginSeparatorString = "",
+                        EndSeparatorString = "",
+                        Color = new Color().Green
+                    },
+                    CalculateComponentCoordinates = false,
+                    CloneMetadata = "Source",
+                    MarkDeletedInsertedContentDeep = false,
+                    MetaData = new ComparisonMetadataValues()
+                    {
+                        Author = "GroupDocs",
+                        Company = "GroupDocs",
+                        LastSaveBy = "GroupDocs"
+                    },
+                    Password = "1111",
+                    PasswordSaveOption = "User"
+                },
+                SourceFile = new ComparisonFileInfo()
+                {
+                    Folder = "",
+                    Name = sourceName,
+                    Password = ""
+                },
+
+            };
+
+            List<ComparisonFileInfo> targets = new List<ComparisonFileInfo>();
+            foreach (string targetsName in targetsNames)
+            {
+                targets.Add(new ComparisonFileInfo()
+                {
+                    Folder = "",
+                    Name = targetsName,
+                    Password = ""
+                });
+            }
+
+            comparisonRequest.TargetFiles = targets.ToArray();
+
+            comparisonRequest.Changes = new List<ComparisonChange>();
+            comparisonRequest.Changes.Add(new ComparisonChange() { Id = 0, Action = "Accept" });
+            comparisonRequest.Changes.Add(new ComparisonChange() { Id = 1, Action = "Reject" });
+
+            return comparisonRequest;
         }
 
         /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
-        /// Test an instance of ChangesApi
+        /// Test PostCategoriesChanges
         /// </summary>
         [Test]
-        public void InstanceTest()
+        public void PostCategoriesChangesTest()
         {
-            Assert.IsInstanceOf(typeof(ChangesApi), instance, "instance is a ChangesApi");
+            PostCategoriesChangesRequest request = new PostCategoriesChangesRequest(GetComparisonRequest("source.docx", new List<string> { "target.docx" }));
+            var response = ChangesApi.PostCategoriesChanges(request);
+            Assert.IsInstanceOf<List<ComparisonChangesCategoryDto>>(response, "response is List<ComparisonChangesCategoryDto>");
         }
+
+        /// <summary>
+        /// Test PostChanges
+        /// </summary>
+        [Test]
+        public void PostChangesTest()
+        {
+            PostChangesRequest request = new PostChangesRequest(GetComparisonRequest("source.docx", new List<string> { "target.docx" }));
+            var response = ChangesApi.PostChanges(request);
+            Assert.IsInstanceOf<List<ComparisonChange>>(response, "response is List<ComparisonChange>");
+        }
+
+        /// <summary>
+        /// Test PutChangesDocument
+        /// </summary>
+        [Test]
+        public void PutChangesDocumentTest()
+        {
+            string outPath = "result.docx";
+            PutChangesDocumentRequest request = new PutChangesDocumentRequest(GetComparisonRequest("source.docx", new List<string> { "target.docx" }), outPath);
+            var response = ChangesApi.PutChangesDocument(request);
+            Assert.IsInstanceOf<Link>(response, "response is Link");
+        }
+
+        /// <summary>
+        /// Test PutChangesDocumentStream
+        /// </summary>
+        [Test]
+        public void PutChangesDocumentStreamTest()
+        {
+            PutChangesDocumentStreamRequest request = new PutChangesDocumentStreamRequest(GetComparisonRequest("source.docx", new List<string> { "target.docx" }));
+            var response = ChangesApi.PutChangesDocumentStream(request);
+            Assert.IsInstanceOf<System.IO.Stream>(response, "response is System.IO.Stream");
+        }
+
+        /// <summary>
+        /// Test PutChangesImages
+        /// </summary>
+        [Test]
+        public void PutChangesImagesTest()
+        {
+            string outPath = "result.docx";
+            PutChangesImagesRequest request = new PutChangesImagesRequest(GetComparisonRequest("source.docx", new List<string> { "target.docx" }), outPath);
+            var response = ChangesApi.PutChangesImages(request);
+            Assert.IsInstanceOf<List<Link>>(response, "response is List<Link>");
+        }
+
+        /// <summary>
+        /// Test PutChangesImagesStream
+        /// </summary>
+        [Test]
+        public void PutChangesImagesStreamTest()
+        {
+            PutChangesImagesStreamRequest request = new PutChangesImagesStreamRequest(GetComparisonRequest("source.docx", new List<string> { "target.docx" }));
+            var response = ChangesApi.PutChangesImagesStream(request);
+            Assert.IsInstanceOf<System.IO.Stream>(response, "response is System.IO.Stream");
+        }
+
     }
+
 }

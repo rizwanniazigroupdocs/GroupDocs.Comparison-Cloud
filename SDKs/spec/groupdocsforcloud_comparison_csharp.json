@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "GroupDocs.Comparison for Cloud API Reference",
-    "version": "17.12"
+    "version": "1.0"
   },
   "host": "localhost",
   "basePath": "/v1.0",

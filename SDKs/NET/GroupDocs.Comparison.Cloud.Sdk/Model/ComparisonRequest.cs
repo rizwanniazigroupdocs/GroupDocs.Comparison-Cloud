@@ -46,7 +46,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model
         /// <summary>
         /// The files names
         /// </summary>  
-        public List<ComparisonFileInfo> TargetFiles { get; set; }
+        public ComparisonFileInfo[] TargetFiles { get; set; }
 
         /// <summary>
         /// The settings

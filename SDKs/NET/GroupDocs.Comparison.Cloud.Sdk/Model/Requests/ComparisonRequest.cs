@@ -42,7 +42,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="outPath">outPath: path to output document on file storage</param>
-        public ComparisonRequest(ComparisonRequest request = null, string outPath = null)
+        public ComparisonRequest(Model.ComparisonRequest request = null, string outPath = null)
         {
             this.Request = request;
             this.OutPath = outPath;
@@ -51,7 +51,7 @@ namespace GroupDocs.Comparison.Cloud.Sdk.Model.Requests
         /// <summary>
         /// The request.
         /// </summary>  
-        public ComparisonRequest Request { get; set; }
+        public Model.ComparisonRequest Request { get; set; }
 
         /// <summary>
         /// outPath: path to output document on file storage
